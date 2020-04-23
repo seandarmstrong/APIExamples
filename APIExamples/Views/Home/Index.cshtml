@@ -1,0 +1,24 @@
+﻿@model APIExamples.API_Models.Joke
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@Model.Value.Joke
+<br />
+<!--this stops the ul from being inserted if it's blank-->
+@if (Model.Value.Categories.Length > 0)
+{
+    <ul>
+        @foreach (string cat in Model.Value.Categories)
+        {
+            <li>@cat</li>
+        }
+    </ul>
+}
+<br/>
+<hr/>
+<form asp-controller="Home" asp-action="Forecast" method="post">
+    <input type="text" name="lat" />
+    <input type="text" name="lon" />
+    <button type="submit">Submit Here</button>
+</form>
